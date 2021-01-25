@@ -1,3 +1,3 @@
 # About
 
-This is an exersice repository part of BootCamp2021 course.
+This is an repository for demo app of BootCamp2021 course.
