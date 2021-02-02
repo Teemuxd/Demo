@@ -10,12 +10,13 @@
        <div> 
           <h1 >Login</h1> 
        </div></br>
-          <form action="" method="post"> 
+          <form action="{{ url_for('login') }}" method="post"> 
               <input id="username" name="username" type="text" placeholder="Username" /></br> 
               <input id="password" name="password" type="password" placeholder=" Password" /></br>
               <input type="submit" type="button" value="Sign In"></br></br> 
           </form> 
-      <p>Dont have an account?  <a class="bottom" href="register.html"> Sign Up</a></p> 
+      <p>Dont have an account?  <a class="bottom" href="{{url_for('register')}}"> Sign Up</a></p> 
+      <p> {{msg}}</p>
     </div> 
   </div> 
 </body>

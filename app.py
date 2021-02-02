@@ -1,10 +1,11 @@
-from flask import Flask, render_template, request, url_for
+from flask import Flask, render_template, url_for, session, request
 from flask_mysqldb import MySQL
 import MySQLdb.cursors
 
 
 
 app = Flask(__name__)
+app.secret_key = 'random_stringu'
 
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
@@ -37,6 +38,25 @@ def register():
     elif request.method == 'POST':
         msg = 'All forms must be filled'
     return render_template('register.html', msg=msg)
+
+@app.route('/login', methods =['GET', 'POST']) 
+def login(): 
+    msg = '' 
+    if request.method == 'POST' and 'username' in request.form and 'password' in request.form: 
+        username = request.form['username'] 
+        password = request.form['password'] 
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor) 
+        cursor.execute('SELECT * FROM accounts WHERE username = % s AND password = % s', (username, password, )) 
+        account = cursor.fetchone() 
+        if account: 
+            session['loggedin'] = True
+            session['id'] = account['id'] 
+            session['username'] = account['username'] 
+            msg = 'Logged in'
+            return render_template('index.html', msg = msg) 
+        else: 
+            msg = 'Incorrect username / password !'
+    return render_template('login.html', msg = msg) 
 
 if __name__ == '__main__':
     app.run()
