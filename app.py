@@ -39,6 +39,7 @@ def register():
         msg = 'All forms must be filled'
     return render_template('register.html', msg=msg)
 
+#stores data to session if login is success
 @app.route('/login', methods =['GET', 'POST']) 
 def login(): 
     msg = '' 
@@ -56,8 +57,18 @@ def login():
             return render_template('index.html', msg = msg) 
         else: 
             msg = 'Incorrect username / password !'
-    return render_template('login.html', msg = msg) 
+    return render_template('login.html', msg=msg)
+    
+ #delete the session information   
+@app.route('/logout') 
+def logout(): 
+    session.pop('loggedin', None) 
+    session.pop('id', None) 
+    session.pop('username', None) 
+    return render_template('login.html') 
 
 if __name__ == '__main__':
     app.run()
+
+
 
