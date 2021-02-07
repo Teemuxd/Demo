@@ -1,12 +1,23 @@
-<HTML>
-    <BODY >
-    <form method="POST" action="">
-
-        <H1>Enter your name and last name </H1> <br>
-        First Name <input type = "text" name= "fname" /> <br>
-        Last Name <input type = "text" name = "lname" /> <br>
-        <input type = "submit">
-
-    </form>
-    </BODY>
-    </HTML>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>index</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+ <div align="center"> 
+     <div aling="center" class="border" > 
+        <div class="header"> 
+          <h1 class="word">Index</h1> 
+       </div></br>
+          <h1 class="bottom"> 
+               Hello {{session.username}}!!</br></br> Welcome to the index page...                  
+          </h1></br>
+          <a href="{{ url_for('logout') }}">Logout</a> 
+    </div> 
+  </div> 
+</body>
+</html>

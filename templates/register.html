@@ -4,21 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Register</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <div > 
-        <div > 
-           <div > 
-              <h1> Register </h1>
+    <div align="center"> 
+        <div aling="center" class="border" > 
+           <div class="header"> 
+              <h1 class="word"> Registeration page </h1>
            </div></br></br></br> 
               <form action="{{ url_for('register') }}" method="post"> 
+                <div class="msg">{{ msg }}</div> 
                   <input id="username" name="username" type="text" placeholder="Username" /></br>
                   <input id="password" name="password" type="password" placeholder="Password"/> </br>
                   <input id="email" name="email" type="text" placeholder="Email " /></br>
                   <input type="submit" type ="button" value="Sign Up"></br> 
               </form> 
-              <p>{{ msg }}</p>
+            </form> 
+            <p class="bottom"> Already have account?  <a  href="{{url_for('login')}}">Sign in here</a></p> 
         </div> 
       </div> 
     
