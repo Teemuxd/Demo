@@ -6,17 +6,19 @@ import MySQLdb.cursors
 
 app = Flask(__name__)
 app.secret_key = 'random_stringu'
-
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_DB'] = 'demo2'
+#database connection
+app.config['MYSQL_HOST'] = 'eu-cdbr-west-03.cleardb.net'
+app.config['MYSQL_USER'] = 'b85d3c3102119e'
+app.config['MYSQL_PASSWORD'] = 'bfebaa95'
+app.config['MYSQL_DB'] = 'heroku_ad0542da6c5db3f'
 
 mysql = MySQL(app)
 
-# Register function, tests if account already exists in database and all form must be filled
+
 @app.route('/')
 @app.route('/register', methods=['GET', 'POST'])
 def register():
+    # Register function, tests if account already exists in database and all form must be filled
     msg = ''
     if request.method == 'POST' and 'username' in request.form and 'password' in request.form and 'email' in request.form:
         username = request.form['username']
@@ -39,9 +41,10 @@ def register():
         msg = 'All forms must be filled'
     return render_template('register.html', msg=msg)
 
-#stores data to session if login is success
+
 @app.route('/login', methods =['GET', 'POST']) 
-def login(): 
+def login():
+    #stores data to session if login is success
     msg = '' 
     if request.method == 'POST' and 'username' in request.form and 'password' in request.form: 
         username = request.form['username'] 
@@ -59,9 +62,10 @@ def login():
             msg = 'Incorrect username / password !'
     return render_template('login.html', msg=msg)
     
- #delete the session information   
+ 
 @app.route('/logout') 
-def logout(): 
+def logout():
+    #delete the session information when logging out   
     session.pop('loggedin', None) 
     session.pop('id', None) 
     session.pop('username', None) 
