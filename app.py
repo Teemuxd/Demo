@@ -71,5 +71,10 @@ def logout():
     session.pop('username', None) 
     return render_template('login.html') 
 
+if __name__ == '__main__':
+    app.run(threaded=True, port=5000)
+
+
+
 
 
