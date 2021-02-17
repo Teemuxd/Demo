@@ -2,7 +2,7 @@
 
 This is an repository for demo app of BootCamp2021 course.It has register,login and logout functions all data is stored in database.
 
-#Installation
+# Installation
 
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install packages
 
